@@ -16,17 +16,27 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- NEW PLUGINS LIST
-require("lazy").setup(
-
+require("lazy").setup({
+	{
+		"rebelot/kanagawa.nvim",
+		lazy=false
+	},
+	{
+ 	   	'nvim-lualine/lualine.nvim',
+    		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		lazy=false
+	},
 	{
     		"nvim-telescope/telescope-file-browser.nvim",
-    		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+		lazy=false
 	},
 	{
     		'nvim-telescope/telescope.nvim', 
 		tag = '0.1.5',
 		dependencies = {'nvim-lua/plenary.nvim'},
-	}	
+		lazy=false
+	}}
 )
 
 require("telescope").setup {
@@ -46,5 +56,9 @@ require("telescope").setup {
     },
   },
 }
+
+vim.cmd("colorscheme kanagawa")
+
+require('lualine').setup()
 
 require("telescope").load_extension "file_browser"
